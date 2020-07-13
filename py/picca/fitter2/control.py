@@ -75,6 +75,7 @@ class fitter2:
         for d, s in zip(self.dic_init['data sets']['data'], scale_fastmc):
             d.co = s*d.co
             d.ico = d.ico/s
+            d.log_co_det = d.log_co_det + np.log(s)
             # no need to compute Cholesky when computing forecast
             if not forecast:
                 d.cho = cholesky(d.co)
